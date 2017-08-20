@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+</head>
+<body>
+  <canvas id="c" width="300" height="300"></canvas>
+  <!--<img id="imgBug" src="enemy-bug.png"/>-->
+
+  <script>
+    var c = document.querySelector("#c");
+    var ctx = c.getContext("2d");
+    var img = new Image();
+    var imgData;
+    img.src = 'enemy-bug.png';
+    img.onload = function(){
+      ctx.drawImage(img,0,0);
+      imgData = ctx.getImageData(0,0,c.width,c.height);
+      console.log(imgData);
+      paintGray(imgData);
+    };
+    
+    
+    function paintGray(imgData) {
+      for(var i = 0; i < imgData.data.length; i += 4){
+        var newC = 0;
+        newC = (imgData.data[i] + imgData.data[i+1] + imgData.data[i+2]) / 3;
+        imgData.data[i] = newC;
+        imgData.data[i+1] = newC;
+        imgData.data[i+2] = newC;
+      };
+      ctx.putImageData(imgData, 0, 0);
+    };
+    
+    
+   
+    
+    /*
+    for(var i = 0; i < imgData.data.length; i += 32){
+      imgData.data[i+1] = 255;
+      imgData.data[i+3] = 255;
+      if(i > (imgData.data.length - 64)){
+        console.log('near end');
+      };
+    };
+    */
+    
+
+    //ctx.putImageData(imgData,0,0);
+ 
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+</head>
+<body>
+  <canvas id="c" width="500" height="500"></canvas>
+  <script>
+    var c = document.querySelector("#c");
+    var ctx = c.getContext("2d");
+    
+    /*
+    //ctx.fillRect(100,100,100,100);
+    ctx.strokeRect(50, 50, 100, 100);
+    
+    ctx.beginPath();
+    // ctx.scale(2,4);
+    // ctx.rotate(0.785);
+    ctx.translate(60, 0);
+    ctx.moveTo(75, 75);
+    ctx.lineTo(125, 75);
+    ctx.lineTo(125, 125);
+    ctx.lineTo(75, 75);
+    ctx.fill();
+
+    //ctx.stroke();
+    
+    var image = new Image();
+    image.onload = function (){
+      console.log("Loaded image");
+      ctx.drawImage(image, 0, 0, c.width, c.height);
+      var savedImage = c.toDataURL();
+      window.open(savedImage);
+    };
+    image.src = "enemy-bug.png"
+    */
+ 
+  ctx.strokeStyle = 'yellow';
+  ctx.strokeRect(50, 50, 100, 100);
+  ctx.beginPath();
+  ctx.moveTo(75, 75);
+  ctx.lineTo(125, 125);
+  ctx.lineTo(125, 75);
+  ctx.fillStyle = 'blue';
+  ctx.fill();
+  ctx.strokeStyle = 'red';
+  ctx.moveTo(180, 180);
+  ctx.lineTo(200, 200);
+  ctx.stroke();
+  ctx.font = "italic 2.5em sans-serif";
+ // ctx.textBaseline = "top";
+  ctx.fillText("X", 248, 43);
+  ctx.fillText("y", 58, 165);
+  var testGrad = ctx.createLinearGradient(220, 220, 220, 300);
+  testGrad.addColorStop(0, "grey");
+  testGrad.addColorStop(1, "blue");
+  ctx.fillStyle = testGrad;
+  ctx.fillRect(180, 180, 50, 100);
+  ctx.font = "bold 36pt ICONICE";
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 3;
+  ctx.strokeText("CANVAS MEMES", 30, 200);
+ 
+ 
+ /*
+ctx.fillStyle = "blue";
+ctx.fillRect(0,0,50,50);
+
+// Save state with blue fill
+ctx.save();
+ctx.fillStyle = "green";
+ctx.fillRect(100,100,10,10);
+// Restore to blue fill
+ctx.restore();
+
+ctx.fillRect(200,10,20,20);
+*/
+  </script>
+</body>
+</html>

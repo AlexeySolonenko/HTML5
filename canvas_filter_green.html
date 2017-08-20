@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+</head>
+<body>
+  <canvas id="c" width="100" height="100"></canvas>
+  <script>
+    var c = document.querySelector("#c");
+    var ctx = c.getContext("2d");
+
+    var imgData = ctx.getImageData(0,0,c.width,c.height);
+    
+    console.log(imgData);
+
+    for(var i = 0; i < imgData.data.length; i += 32){
+      imgData.data[i+1] = 255;
+      imgData.data[i+3] = 255;
+      if(i > (imgData.data.length - 64)){
+        console.log('near end');
+      };
+    };
+
+    ctx.putImageData(imgData,0,0);
+ 
+  </script>
+</body>
+</html>
